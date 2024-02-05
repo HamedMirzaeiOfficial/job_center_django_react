@@ -1,0 +1,55 @@
+services:
+  database:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: blog_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - net1
+
+  django_app:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    networks:
+      - net1
+
+  react_app:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - django_app
+
+
+  redis:
+    build:
+      context: .
+      dockerfile: redis/Dockerfile
+
+    networks:
+      - net1
+
+
+  
+
+
+volumes:
+  postgresql_data:
+  frontend:
+
+
+networks:
+  net1:

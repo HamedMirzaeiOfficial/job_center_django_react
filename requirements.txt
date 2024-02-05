@@ -1,0 +1,14 @@
+asgiref==3.7.2
+async-timeout==4.0.3
+Django==3.2.7
+django-cors-headers==4.3.1
+django-redis==5.4.0
+django-rest-framework==0.1.0
+djangorestframework==3.14.0
+djangorestframework-jwt==1.11.0
+psycopg2-binary==2.9.9
+PyJWT==1.7.1
+pytz==2023.3.post1
+redis==5.0.1
+sqlparse==0.4.4
+typing_extensions==4.9.0
